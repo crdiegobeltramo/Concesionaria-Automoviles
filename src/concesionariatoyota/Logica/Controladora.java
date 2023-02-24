@@ -41,6 +41,24 @@ JOptionPane optionPane = new JOptionPane("Se guardó correctamente");
         controlPersis.borrarAuto(idAuto);
     }
 
+    public AutoToyota traerAuto(int idAuto) {
+        return controlPersis.traerAuto(idAuto);
+    }
+
+    public void modificarAuto(AutoToyota auto, String modelo, String marca, String motor, String color, String patente, int cantPuertas) {
+        auto.setColor(color);
+        auto.setModelo(modelo);
+        auto.setMarca(marca);
+        auto.setMotor(motor);
+        auto.setPatente(patente);
+        auto.setCantPuertas(cantPuertas);
+        
+        
+        controlPersis.modificarAuto(auto);
+    }
+
+    
+
     
 
    

@@ -90,6 +90,11 @@ Controladora control = new Controladora();
 
         btnModificar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,10 +164,39 @@ Controladora control = new Controladora();
             mostrarMensaje("No selecciono un registro para eliminar","Error", "Error al eliminar");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-        else{
+           else{
             mostrarMensaje("La tabla esta vacia, no se puede eliminar","Error", "Error al eliminar");
     }
+        
+        
+}
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+         //control de que la tabla no este vacia
+        if(TablaAutos.getRowCount()> 0){
+        // valido que se haya seleccionado un registro
+        if(TablaAutos.getSelectedRow()!= -1){
+        // obtener la Id del auto que quiero modificar
+        int idAuto = Integer.parseInt(String.valueOf( TablaAutos.getValueAt(TablaAutos.getSelectedRow(),0)));
+        ModifAuto modif = new ModifAuto(idAuto);
+        modif.setVisible(true);
+        modif.setLocationRelativeTo(null);
+        
+        this.dispose();
+        }
+        else{
+            mostrarMensaje("No selecciono un registro para modificar","Error", "Error al modificar");
+        }
+    }                                           
+           else{
+            mostrarMensaje("La tabla esta vacia, no se puede modificar","Error", "Error al modificar");
     }
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+            
+    
+    
+    
+    
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);
         if(tipo.equals("Info")){

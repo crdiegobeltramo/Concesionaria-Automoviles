@@ -32,6 +32,19 @@ AutoToyotaJpaController autoJpa = new AutoToyotaJpaController();
     }
     }
 
+    public AutoToyota traerAuto(int idAuto) {
+       return autoJpa.findAutoToyota(idAuto);
+                
+    }
+
+    public void modificarAuto(AutoToyota auto) {
+    try {
+        autoJpa.edit(auto);
+    } catch (Exception ex) {
+        Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }
+
     
     
    
